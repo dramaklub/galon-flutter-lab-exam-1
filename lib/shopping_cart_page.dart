@@ -1,37 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Stateless Lab Exam',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF2563EB),
-          primary: const Color(0xFF2563EB),
-          surface: const Color(0xFFF8FAFC),
-        ),
-        scaffoldBackgroundColor: const Color(0xFFF8FAFC),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          foregroundColor: Color(0xFF0F172A),
-          elevation: 0,
-          scrolledUnderElevation: 0,
-        ),
-      ),
-      home: const ShoppingCartPage(),
-    );
-  }
-}
-
 class ShoppingCartPage extends StatelessWidget {
   const ShoppingCartPage({super.key});
 
@@ -89,7 +57,6 @@ class ShoppingCartPage extends StatelessWidget {
           ),
         ],
       ),
-      
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
@@ -133,6 +100,7 @@ class ShoppingCartPage extends StatelessWidget {
               _buildDeliveryCard(),
               const SizedBox(height: 24),
 
+              // Order Items Header
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -156,6 +124,7 @@ class ShoppingCartPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
+              // Product Cards
               const CartItemCard(
                 name: 'Wireless Mouse',
                 price: 'PHP 450.00',
@@ -178,6 +147,7 @@ class ShoppingCartPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
+              // Discount Banner
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -390,7 +360,7 @@ class ShoppingCartPage extends StatelessWidget {
           style: TextStyle(
             fontSize: isTotal ? 16 : 14,
             fontWeight: isTotal ? FontWeight.w900 : FontWeight.w600,
-            color: isTotal ? _darkText : _darkText,
+            color: _darkText,
           ),
         ),
       ],
@@ -429,7 +399,6 @@ class CartItemCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Icon Container
           Container(
             width: 64,
             height: 64,
@@ -440,7 +409,6 @@ class CartItemCard extends StatelessWidget {
             child: Icon(icon, color: _primaryBlue, size: 30),
           ),
           const SizedBox(width: 14),
-          // Details
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
